@@ -18,7 +18,7 @@ public static class GameUI
         }
         else
         {
-            player2Name = "COMPUTER BOT";
+            player2Name = "computer";
         }
 
         bool validInput = false;

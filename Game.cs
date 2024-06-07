@@ -82,15 +82,18 @@ public class Game
     {
         if(m_Player1.Score > m_Player2.Score)
         {
-            Console.WriteLine($"{m_Player1.Name} wins!");
+            Console.WriteLine($"{m_Player1.Name} wins! with {m_Player1.Score} points!");
+            Console.WriteLine($"\n{m_Player2.Name} had {m_Player2.Score} points.");
         }
         else if(m_Player1.Score < m_Player2.Score)
         {
-            Console.WriteLine($"{m_Player2.Name} wins!");
+            Console.WriteLine($"{m_Player2.Name} wins! with {m_Player2.Score} points!");
+            Console.WriteLine($"\n{m_Player1.Name} had {m_Player1.Score} points.");
         }
         else
         {
-            Console.WriteLine("It's a tie!");
+            Console.WriteLine("It's a tie! With a tied score of {m_Player1.Score} points!");
+
         }
     }
 }
