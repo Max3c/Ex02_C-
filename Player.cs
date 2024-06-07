@@ -24,4 +24,9 @@
             return ComputerPlayer.MakeMove(board);
         }
     }
+
+    public void increaseScore()
+    {
+        m_Score++;
+    }
 }

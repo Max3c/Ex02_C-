@@ -1,4 +1,5 @@
 ﻿using System;
+using Ex02.ConsoleUtils;
 
 public class Game
 {
@@ -10,7 +11,9 @@ public class Game
     public Game()
     {
         m_IsPlayer1Turn = true;
+        Ex02.ConsoleUtils.Screen.Clear();
         InitializeGame();
+
     }
 
     public void Start()
@@ -22,6 +25,7 @@ public class Game
             m_Board.Print();
         }
         AnnounceWinner();
+
     }
 
     private void InitializeGame()
@@ -37,41 +41,42 @@ public class Game
             m_Player2 = new Player(player2Name, 0, true);
         }
         m_Board = new Board(rows, columns);
+        Ex02.ConsoleUtils.Screen.Clear();
     }
 
     private void TakeTurn()
     {
-        
-        Console.WriteLine($"{(m_IsPlayer1Turn ? m_Player1.Name : m_Player2.Name)}'s turn.");
+        Player currentPlayer = m_IsPlayer1Turn ? m_Player1 : m_Player2; 
+        Console.WriteLine($"{(currentPlayer.Name)}'s turn. Score: {currentPlayer.Score}");
         
 
-        Player currentPlayer = m_IsPlayer1Turn ? m_Player1 : m_Player2;
         bool correctGuess = currentPlayer.MakeMove(m_Board);
         
         if(correctGuess){
            m_IsPlayer1Turn = !m_IsPlayer1Turn;
+           currentPlayer.increaseScore();
         }
         m_IsPlayer1Turn = !m_IsPlayer1Turn;
     }
 
     private bool IsGameOver()
     {
-        return m_Board.CheckWinner('X') || m_Board.CheckWinner('O') || m_Board.IsFull();
+        return m_Board.IsFull();
     }
 
     private void AnnounceWinner()
     {
-        if (m_Board.CheckWinner('X'))
+        if(m_Player1.Score > m_Player2.Score)
         {
             Console.WriteLine($"{m_Player1.Name} wins!");
         }
-        else if (m_Board.CheckWinner('O'))
+        else if(m_Player1.Score < m_Player2.Score)
         {
             Console.WriteLine($"{m_Player2.Name} wins!");
         }
         else
         {
-            Console.WriteLine("It's a draw!");
+            Console.WriteLine("It's a tie!");
         }
     }
 }

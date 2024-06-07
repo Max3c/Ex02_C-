@@ -112,12 +112,6 @@ public class Board
         return $"{(char)('A' + col)}{(row + 1)}";
     }
 
-    public bool CheckWinner(char symbol)
-    {
-        // Check for a winner (to be implemented based on game logic)
-        return false;
-    }
-
     public bool IsFull()
     {
         for (int i = 0; i < Rows; i++)
