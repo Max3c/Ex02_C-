@@ -54,10 +54,11 @@ public class Board
     }
     public void Print()
     {
-        Console.WriteLine();
+        Console.WriteLine("");
+        Console.Write(" ");
         for (int c = 0; c < Columns; c++)
         {
-            Console.Write("    " + (char)('A' + c));
+            Console.Write("   " + (char)('A' + c));
         }
         Console.WriteLine();
 
