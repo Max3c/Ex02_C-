@@ -63,10 +63,10 @@ public class Game
         if(!currentPlayer.IsHuman){
             Ex02.ConsoleUtils.Screen.Clear();
         }
-        
+        Console.WriteLine($"\n{(currentPlayer.Name)}'s turn (Score: {currentPlayer.Score})");
 
         bool correctGuess = currentPlayer.MakeMove(m_Board);
-        Console.WriteLine($"\n{(currentPlayer.Name)}'s turn (Score: {currentPlayer.Score})");
+        
         
         if(correctGuess){
            currentPlayer.increaseScore();
