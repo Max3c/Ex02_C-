@@ -5,6 +5,7 @@ public static class ComputerPlayer
 {
     private static Random m_Random = new Random();
 
+
     public static bool MakeMove(Board board)
     {
         
@@ -28,6 +29,8 @@ public static class ComputerPlayer
         } while (!board.IsCellHidden(row2, col2) || (row1 == row2 && col1 == col2));
         card2 = board.RevealCell(row2, col2);
         
+        Ex02.ConsoleUtils.Screen.Clear();
+
         board.Print();
         Console.WriteLine($"\nComputer chose {board.GetCellName(row1, col1)}");
         Console.WriteLine($"Computer chose {board.GetCellName(row2, col2)}");
