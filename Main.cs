@@ -1,8 +1,9 @@
 ﻿using System;
-
-public class Main
+public class Program
 {
-	public Main()
-	{
-	}
+    public static void Main(string[] args)
+    {
+        Game game = new Game();
+		game.Start();
+    }
 }

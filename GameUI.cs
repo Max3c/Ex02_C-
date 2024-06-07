@@ -1,4 +1,5 @@
-﻿public static class GameUI
+﻿using System;
+public static class GameUI
 {
     public static void GetPlayerInfo(out string player1Name, out bool isAgainstComputer, out string player2Name, out int boardRows, out int boardColumns)
     {
@@ -17,7 +18,7 @@
         }
         else
         {
-            player2Name = string.Empty;
+            player2Name = "COMPUTER BOT";
         }
 
         bool validInput = false;

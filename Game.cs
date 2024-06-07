@@ -26,10 +26,8 @@ public class Game
 
     private void InitializeGame()
     {
-        GameUI.GetPlayerInfo(out string player1Name, out bool isAgainstComputer, out string player2Name, out int boardSize);
-        m_Player1 = new HumanPlayer(player1Name, 'X');
-        m_Player2 = isAgainstComputer ? new ComputerPlayer('O') : new HumanPlayer(player2Name, 'O');
-        m_Board = new Board(boardSize);
+        GameUI.GetPlayerInfo(out string player1Name, out bool isAgainstComputer, out string player2Name, out int rows, out int columns);
+        m_Board = new Board(rows, columns);
     }
 
     private void TakeTurn()
@@ -37,6 +35,7 @@ public class Game
         Console.WriteLine($"{(m_IsPlayer1Turn ? m_Player1.Name : m_Player2.Name)}'s turn.");
         Player currentPlayer = m_IsPlayer1Turn ? m_Player1 : m_Player2;
         currentPlayer.MakeMove(m_Board);
+
         m_IsPlayer1Turn = !m_IsPlayer1Turn;
     }
 

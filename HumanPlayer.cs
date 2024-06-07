@@ -1,4 +1,5 @@
-﻿public static class HumanPlayer
+﻿using System;
+public static class HumanPlayer
 {
     public static void MakeMove(Board board)
     {

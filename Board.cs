@@ -4,10 +4,9 @@ public class Board
 {
     private char[,] m_Cells;
     private bool[,] m_Revealed;
-    private Random m_Random = new Random();
-
     public int Rows { get; }
     public int Columns { get; }
+    public Random m_Random = new Random();
 
     public Board(int rows, int columns)
     {
@@ -18,8 +17,8 @@ public class Board
 
         Rows = rows;
         Columns = columns;
-        m_Cells = new char[Rows, Columns];
-        m_Revealed = new bool[Rows, Columns];
+        m_Cells = new char[Rows,Columns];
+        m_Revealed = new bool[Rows,Columns];
         initializeBoard();
     }
 
