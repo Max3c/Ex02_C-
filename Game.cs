@@ -60,10 +60,13 @@ public class Game
     private void TakeTurn()
     {
         Player currentPlayer = m_IsPlayer1Turn ? m_Player1 : m_Player2; 
-        Console.WriteLine($"\n{(currentPlayer.Name)}'s turn (Score: {currentPlayer.Score})");
+        if(!currentPlayer.IsHuman){
+            Ex02.ConsoleUtils.Screen.Clear();
+        }
         
 
         bool correctGuess = currentPlayer.MakeMove(m_Board);
+        Console.WriteLine($"\n{(currentPlayer.Name)}'s turn (Score: {currentPlayer.Score})");
         
         if(correctGuess){
            currentPlayer.increaseScore();
