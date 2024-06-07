@@ -57,7 +57,7 @@ public class Board
         Console.WriteLine();
         for (int c = 0; c < Columns; c++)
         {
-            Console.Write("  " + (char)('A' + c));
+            Console.Write("    " + (char)('A' + c));
         }
         Console.WriteLine();
 
