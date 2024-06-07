@@ -22,10 +22,34 @@ public class Game
         while (!IsGameOver())
         {
             TakeTurn();
-            m_Board.Print();
+            //if the user hits q at any point quit the game
+            if(Console.KeyAvailable)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+                if(key.Key == ConsoleKey.Q)
+                {
+                    Console.WriteLine("Goodbye!");
+                    System.Threading.Thread.Sleep(2000);
+                    Ex02.ConsoleUtils.Screen.Clear();
+                    return;
+                }
+            }
+            //m_Board.Print();
         }
         AnnounceWinner();
-
+        Console.WriteLine("Would you like to play again(Y/N)?");
+        string playAgain;
+        playAgain = Console.ReadLine();
+        if(playAgain == "Y" || playAgain == "y")
+        {
+            Start();
+        }
+        else
+        {
+            Console.WriteLine("Goodbye!");
+            System.Threading.Thread.Sleep(2000);
+            Ex02.ConsoleUtils.Screen.Clear();
+        }
     }
 
     private void InitializeGame()

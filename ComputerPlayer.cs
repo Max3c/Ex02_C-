@@ -7,6 +7,7 @@ public static class ComputerPlayer
 
     public static bool MakeMove(Board board)
     {
+        Ex02.ConsoleUtils.Screen.Clear();
         int row1, col1, row2, col2;
         char card1, card2;
 
