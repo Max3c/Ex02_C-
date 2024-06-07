@@ -23,19 +23,6 @@ public class Game
         {
             TakeTurn();
             m_Board.Print();
-            //if the user hits q at any point quit the game
-            if(Console.KeyAvailable)
-            {
-                ConsoleKeyInfo key = Console.ReadKey(true);
-                if(key.Key == ConsoleKey.Q)
-                {
-                    Console.WriteLine("Goodbye!");
-                    System.Threading.Thread.Sleep(2000);
-                    Ex02.ConsoleUtils.Screen.Clear();
-                    return;
-                }
-            }
-            //m_Board.Print();
         }
         AnnounceWinner();
         Console.WriteLine("Would you like to play again(Y/N)?");

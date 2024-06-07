@@ -7,6 +7,8 @@ public static class HumanPlayer
         int row1, col1, row2, col2;
         char card1, card2;
 
+        board.Print();
+
         // Flip the first card
         Console.WriteLine("Enter the first cell to reveal (e.g., A1): ");
         string move1 = Console.ReadLine();
