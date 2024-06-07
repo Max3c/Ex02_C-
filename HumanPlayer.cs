@@ -46,8 +46,9 @@ public static class HumanPlayer
         else
         {
             Console.WriteLine("No match. Better luck next time!");
-            System.Threading.Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(5000);
             board.HideCell(row1, col1);
+            board.HideCell(row2, col2);
             Ex02.ConsoleUtils.Screen.Clear();
             return false;
         }
