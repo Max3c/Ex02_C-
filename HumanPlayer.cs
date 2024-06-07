@@ -13,15 +13,16 @@ public static class HumanPlayer
         if (board.TryParseMove(move1, out row1, out col1) && board.IsCellHidden(row1, col1))
         {
             card1 = board.RevealCell(row1, col1);
-            board.Print();
         }
         else
         {
             Console.WriteLine("Invalid move. Try again.");
             return false;
         }
+        Ex02.ConsoleUtils.Screen.Clear();
 
         // Flip the second card
+        board.Print();
         Console.WriteLine("Enter the second cell to reveal (e.g., B2): ");
         string move2 = Console.ReadLine();
         if (board.TryParseMove(move2, out row2, out col2) && board.IsCellHidden(row2, col2) && (row1 != row2 || col1 != col2))
@@ -34,11 +35,12 @@ public static class HumanPlayer
             Console.WriteLine("Invalid move. Try again.");
             return false;
         }
-
+        
         // Check if the cards match
         if (card1 == card2)
-        {
+        {   
             Console.WriteLine("You found a match!");
+            System.Threading.Thread.Sleep(5000); 
             Ex02.ConsoleUtils.Screen.Clear();
             return true;
 

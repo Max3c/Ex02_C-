@@ -30,9 +30,11 @@ public static class ComputerPlayer
         card2 = board.RevealCell(row2, col2);
 
         // Check if the cards match
+        board.Print();
         if (card1 == card2)
         {
             Console.WriteLine("Computer found a match!");
+            System.Threading.Thread.Sleep(5000);
             Ex02.ConsoleUtils.Screen.Clear();
             return true;
         }
