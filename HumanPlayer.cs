@@ -1,4 +1,5 @@
 ﻿using System;
+using Ex02.ConsoleUtils;
 public static class HumanPlayer
 {
     public static bool MakeMove(Board board)
@@ -38,13 +39,16 @@ public static class HumanPlayer
         if (card1 == card2)
         {
             Console.WriteLine("You found a match!");
+            Ex02.ConsoleUtils.Screen.Clear();
             return true;
+
         }
         else
         {
             Console.WriteLine("No match. Better luck next time!");
             System.Threading.Thread.Sleep(2000);
             board.HideCell(row1, col1);
+            Ex02.ConsoleUtils.Screen.Clear();
             return false;
         }
     }
