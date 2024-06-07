@@ -40,7 +40,7 @@ public static class HumanPlayer
         // Check if the cards match
         if (card1 == card2)
         {   
-            Console.WriteLine("You found a match!");
+            Console.WriteLine("\nYou found a match!");
             System.Threading.Thread.Sleep(5000); 
             Ex02.ConsoleUtils.Screen.Clear();
             return true;
@@ -48,7 +48,7 @@ public static class HumanPlayer
         }
         else
         {
-            Console.WriteLine("No match. Better luck next time!");
+            Console.WriteLine("\nNo match. Better luck next time!");
             System.Threading.Thread.Sleep(5000);
             board.HideCell(row1, col1);
             board.HideCell(row2, col2);

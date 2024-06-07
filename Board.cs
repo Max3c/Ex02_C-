@@ -54,28 +54,29 @@ public class Board
     }
     public void Print()
     {
-        Console.Write("  ");
+        Console.WriteLine();
         for (int c = 0; c < Columns; c++)
         {
-            Console.Write((char)('A' + c) + " ");
+            Console.Write("  " + (char)('A' + c));
         }
         Console.WriteLine();
 
         for (int i = 0; i < Rows; i++)
         {
-            Console.Write($"{i + 1} ");
+            Console.Write($"{i + 1} |");
             for (int j = 0; j < Columns; j++)
             {
                 if (m_Revealed[i, j])
                 {
-                    Console.Write($"{m_Cells[i, j]} ");
+                    Console.Write($" {m_Cells[i, j]} |");
                 }
                 else
                 {
-                    Console.Write(". ");
+                    Console.Write("   |");
                 }
             }
             Console.WriteLine();
+            Console.WriteLine("  " + new string('=', Columns * 4));
         }
     }
 
