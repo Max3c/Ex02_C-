@@ -22,6 +22,7 @@ public class Game
         while (!IsGameOver())
         {
             TakeTurn();
+            m_Board.Print();
             //if the user hits q at any point quit the game
             if(Console.KeyAvailable)
             {
