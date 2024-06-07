@@ -26,6 +26,7 @@ public static class HumanPlayer
         if (board.TryParseMove(move2, out row2, out col2) && board.IsCellHidden(row2, col2) && (row1 != row2 || col1 != col2))
         {
             card2 = board.RevealCell(row2, col2);
+            board.Print();
         }
         else
         {

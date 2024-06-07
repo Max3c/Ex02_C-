@@ -1,4 +1,5 @@
 ﻿using System;
+using "Ex02.ConsoleUtils";
 public static class ComputerPlayer
 {
     private static Random s_Random = new Random();
@@ -37,7 +38,7 @@ public static class ComputerPlayer
             Console.WriteLine("No match. Better luck next time, computer!");
             System.Threading.Thread.Sleep(2000);
             board.HideCell(row1, col1);
-
+            Ex02.ConsoleUtilts.Screen.Clear();
             return false;
         }
     }
