@@ -30,6 +30,7 @@ public class Game
         playAgain = Console.ReadLine();
         if(playAgain == "Y" || playAgain == "y")
         {
+            Ex02.ConsoleUtils.Screen.Clear();
             Start();
         }
         else
