@@ -79,9 +79,10 @@ public class Board
         }
     }
 
-    public void RevealCell(int row, int col)
+    public char RevealCell(int row, int col)
     {
         m_Revealed[row, col] = true;
+        return m_Cells[row, col];
     }
 
     public bool IsCellHidden(int row, int col)

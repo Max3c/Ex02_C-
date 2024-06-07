@@ -13,15 +13,15 @@
         m_Score = score;
         m_IsHuman = isHuman;
     }
-    public void MakeMove(Board board)
+    public bool MakeMove(Board board)
     {
         if (IsHuman)
         {
-            HumanPlayer.MakeMove(board);
+            return HumanPlayer.MakeMove(board);
         }
         else
         {
-            ComputerPlayer.MakeMove(board);
+            return ComputerPlayer.MakeMove(board);
         }
     }
 }
