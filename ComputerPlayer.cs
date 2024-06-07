@@ -29,7 +29,7 @@ public static class ComputerPlayer
         card2 = board.RevealCell(row2, col2);
         
         board.Print();
-        Console.WriteLine($"Computer chose {board.GetCellName(row1, col1)}");
+        Console.WriteLine($"\nComputer chose {board.GetCellName(row1, col1)}");
         Console.WriteLine($"Computer chose {board.GetCellName(row2, col2)}");
 
         

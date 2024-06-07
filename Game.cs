@@ -66,10 +66,11 @@ public class Game
         bool correctGuess = currentPlayer.MakeMove(m_Board);
         
         if(correctGuess){
-           m_IsPlayer1Turn = !m_IsPlayer1Turn;
            currentPlayer.increaseScore();
         }
-        m_IsPlayer1Turn = !m_IsPlayer1Turn;
+        else{
+            m_IsPlayer1Turn = !m_IsPlayer1Turn;
+        }
     }
 
     private bool IsGameOver()
