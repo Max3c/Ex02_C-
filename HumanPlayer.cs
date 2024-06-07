@@ -23,7 +23,6 @@ public static class HumanPlayer
         Ex02.ConsoleUtils.Screen.Clear();
 
         // Flip the second card
-        board.Print();
         Console.WriteLine("Enter the second cell to reveal (e.g., B2): ");
         string move2 = Console.ReadLine();
         do{

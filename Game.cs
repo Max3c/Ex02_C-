@@ -22,7 +22,7 @@ public class Game
         while (!IsGameOver())
         {
             TakeTurn();
-            //m_Board.Print();
+            m_Board.Print();
         }
         AnnounceWinner();
         Console.WriteLine("Would you like to play again(Y/N)?");
