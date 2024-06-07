@@ -17,6 +17,13 @@ public static class HumanPlayer
                 Console.WriteLine("Invalid move. Try again.");
                 move1 = Console.ReadLine();
             }
+            if(move1 == "Q" || move1=="q")
+            {
+                Ex02.ConsoleUtils.Screen.Clear();
+                Console.WriteLine("Goodbye!");
+                System.Threading.Thread.Sleep(2000);
+                Environment.Exit(0);
+            }
         } while (!board.TryParseMove(move1, out row1, out col1) || !board.IsCellHidden(row1, col1));
         
         card1 = board.RevealCell(row1, col1);
@@ -30,6 +37,13 @@ public static class HumanPlayer
             {
                 Console.WriteLine("Invalid move. Try again.");
                 move2 = Console.ReadLine();
+            }
+            if(move2 == "Q" || move2 == "q")
+            {
+                Ex02.ConsoleUtils.Screen.Clear();
+                Console.WriteLine("Goodbye!");
+                System.Threading.Thread.Sleep(2000);
+                Environment.Exit(0);
             }
         } while (!board.TryParseMove(move2, out row2, out col2) || !board.IsCellHidden(row2, col2) || (row1 == row2 && col1 == col2));
 
