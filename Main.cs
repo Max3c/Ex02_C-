@@ -4,6 +4,10 @@ public class Program
     public static void Main(string[] args)
     {
         Game game = new Game();
-		game.Start();
+		bool restart = game.Start();
+		while(restart){
+			game = new Game();
+			restart = game.Start();
+		}
     }
 }

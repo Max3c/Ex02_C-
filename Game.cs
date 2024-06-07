@@ -16,7 +16,7 @@ public class Game
 
     }
 
-    public void Start()
+    public bool Start()
     {
         m_Board.Print();
         while (!IsGameOver())
@@ -31,13 +31,15 @@ public class Game
         if(playAgain == "Y" || playAgain == "y")
         {
             Ex02.ConsoleUtils.Screen.Clear();
-            Start();
+            return true;
         }
         else
         {
+            Ex02.ConsoleUtils.Screen.Clear();
             Console.WriteLine("Goodbye!");
             System.Threading.Thread.Sleep(2000);
             Ex02.ConsoleUtils.Screen.Clear();
+            return false;
         }
     }
 
@@ -66,6 +68,7 @@ public class Game
         
         
         if(correctGuess){
+            int currScore = currentPlayer.Score;
            currentPlayer.increaseScore();
         }
         else{
@@ -82,7 +85,7 @@ public class Game
     {
         if(m_Player1.Score > m_Player2.Score)
         {
-            Console.WriteLine($"{m_Player1.Name} wins! with {m_Player1.Score} points!");
+            Console.WriteLine($"\n{m_Player1.Name} wins! with {m_Player1.Score} points!");
             Console.WriteLine($"\n{m_Player2.Name} had {m_Player2.Score} points.");
         }
         else if(m_Player1.Score < m_Player2.Score)
@@ -92,7 +95,7 @@ public class Game
         }
         else
         {
-            Console.WriteLine("It's a tie! With a tied score of {m_Player1.Score} points!");
+            Console.WriteLine($"\nIt's a tie! With a tied score of {m_Player1.Score} points!");
 
         }
     }
