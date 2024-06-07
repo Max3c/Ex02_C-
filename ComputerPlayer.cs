@@ -1,8 +1,8 @@
 ﻿using System;
-using "Ex02.ConsoleUtils";
+
 public static class ComputerPlayer
 {
-    private static Random s_Random = new Random();
+    private static Random m_Random = new Random();
 
     public static bool MakeMove(Board board)
     {
@@ -12,8 +12,8 @@ public static class ComputerPlayer
         // Flip the first card
         do
         {
-            row1 = s_Random.Next(board.Rows);
-            col1 = s_Random.Next(board.Columns);
+            row1 = m_Random.Next(board.Rows);
+            col1 = m_Random.Next(board.Columns);
         } while (!board.IsCellHidden(row1, col1));
         card1 = board.RevealCell(row1, col1);
         Console.WriteLine($"Computer chose {board.GetCellName(row1, col1)}");
@@ -21,8 +21,8 @@ public static class ComputerPlayer
         // Flip the second card
         do
         {
-            row2 = s_Random.Next(board.Rows);
-            col2 = s_Random.Next(board.Columns);
+            row2 = m_Random.Next(board.Rows);
+            col2 = m_Random.Next(board.Columns);
         } while (!board.IsCellHidden(row2, col2) || (row1 == row2 && col1 == col2));
         card2 = board.RevealCell(row2, col2);
         Console.WriteLine($"Computer chose {board.GetCellName(row2, col2)}");
@@ -38,7 +38,7 @@ public static class ComputerPlayer
             Console.WriteLine("No match. Better luck next time, computer!");
             System.Threading.Thread.Sleep(2000);
             board.HideCell(row1, col1);
-            Ex02.ConsoleUtilts.Screen.Clear();
+            //Ex02.ConsoleUtilts.Screen.Clear();
             return false;
         }
     }
