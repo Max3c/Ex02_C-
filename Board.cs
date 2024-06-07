@@ -61,7 +61,7 @@ public class Board
             Console.Write("   " + (char)('A' + c));
         }
         Console.WriteLine();
-
+        Console.WriteLine("  " + new string('=', Columns * 4));
         for (int i = 0; i < Rows; i++)
         {
             Console.Write($"{i + 1} |");
