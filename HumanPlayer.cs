@@ -21,7 +21,7 @@ public static class HumanPlayer
         
         card1 = board.RevealCell(row1, col1);
         Ex02.ConsoleUtils.Screen.Clear();
-
+        board.Print();
         // Flip the second card
         Console.WriteLine("Enter the second cell to reveal (e.g., B2): ");
         string move2 = Console.ReadLine();
@@ -34,6 +34,7 @@ public static class HumanPlayer
         } while (!board.TryParseMove(move2, out row2, out col2) || !board.IsCellHidden(row2, col2) || (row1 == row2 && col1 == col2));
 
         card2 = board.RevealCell(row2, col2);
+        Ex02.ConsoleUtils.Screen.Clear();
         board.Print();
         
         // Check if the cards match
