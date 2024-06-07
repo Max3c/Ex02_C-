@@ -47,6 +47,7 @@ public class Game
 
         Player currentPlayer = m_IsPlayer1Turn ? m_Player1 : m_Player2;
         bool correctGuess = currentPlayer.MakeMove(m_Board);
+        m_Board.Print();
         if(correctGuess){
            m_IsPlayer1Turn = !m_IsPlayer1Turn;
         }

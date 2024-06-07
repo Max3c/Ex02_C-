@@ -35,6 +35,9 @@ public static class ComputerPlayer
         else
         {
             Console.WriteLine("No match. Better luck next time, computer!");
+            System.Threading.Thread.Sleep(2000);
+            board.HideCell(row1, col1);
+
             return false;
         }
     }

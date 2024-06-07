@@ -12,6 +12,7 @@ public static class HumanPlayer
         if (board.TryParseMove(move1, out row1, out col1) && board.IsCellHidden(row1, col1))
         {
             card1 = board.RevealCell(row1, col1);
+            board.Print();
         }
         else
         {
@@ -41,6 +42,8 @@ public static class HumanPlayer
         else
         {
             Console.WriteLine("No match. Better luck next time!");
+            System.Threading.Thread.Sleep(2000);
+            board.HideCell(row1, col1);
             return false;
         }
     }

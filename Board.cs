@@ -79,6 +79,11 @@ public class Board
         }
     }
 
+    public char HideCell(int row, int col)
+    {
+        m_Revealed[row, col] = false;
+        return m_Cells[row, col];
+    }
     public char RevealCell(int row, int col)
     {
         m_Revealed[row, col] = true;
