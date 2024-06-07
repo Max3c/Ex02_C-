@@ -27,14 +27,23 @@ public class Game
     private void InitializeGame()
     {
         GameUI.GetPlayerInfo(out string player1Name, out bool isAgainstComputer, out string player2Name, out int rows, out int columns);
+        m_Player1 = new Player(player1Name, 0, true);
+        if(isAgainstComputer)
+        {
+            m_Player2 = new Player(player2Name, 0, false);
+        }
+        else
+        {
+            m_Player2 = new Player(player2Name, 0, true);
+        }
         m_Board = new Board(rows, columns);
     }
 
     private void TakeTurn()
     {
-        console.WriteLine("started takeTurn");
+        Console.WriteLine("started takeTurn");
         Console.WriteLine($"{(m_IsPlayer1Turn ? m_Player1.Name : m_Player2.Name)}'s turn.");
-        console.WriteLine("plrinter out plater names");
+        Console.WriteLine("plrinter out plater names");
 
         Player currentPlayer = m_IsPlayer1Turn ? m_Player1 : m_Player2;
         currentPlayer.MakeMove(m_Board);
