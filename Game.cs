@@ -32,7 +32,10 @@ public class Game
 
     private void TakeTurn()
     {
+        console.WriteLine("started takeTurn");
         Console.WriteLine($"{(m_IsPlayer1Turn ? m_Player1.Name : m_Player2.Name)}'s turn.");
+        console.WriteLine("plrinter out plater names");
+
         Player currentPlayer = m_IsPlayer1Turn ? m_Player1 : m_Player2;
         currentPlayer.MakeMove(m_Board);
 
