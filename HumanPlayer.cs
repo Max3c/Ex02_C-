@@ -10,31 +10,31 @@ public static class HumanPlayer
         // Flip the first card
         Console.WriteLine("Enter the first cell to reveal (e.g., A1): ");
         string move1 = Console.ReadLine();
-        if (board.TryParseMove(move1, out row1, out col1) && board.IsCellHidden(row1, col1))
-        {
-            card1 = board.RevealCell(row1, col1);
-        }
-        else
-        {
-            Console.WriteLine("Invalid move. Try again.");
-            return false;
-        }
+        do {
+            if (!board.TryParseMove(move1, out row1, out col1) || !board.IsCellHidden(row1, col1))
+            {
+                Console.WriteLine("Invalid move. Try again.");
+                move1 = Console.ReadLine();
+            }
+        } while (!board.TryParseMove(move1, out row1, out col1) || !board.IsCellHidden(row1, col1));
+        
+        card1 = board.RevealCell(row1, col1);
         Ex02.ConsoleUtils.Screen.Clear();
 
         // Flip the second card
         board.Print();
         Console.WriteLine("Enter the second cell to reveal (e.g., B2): ");
         string move2 = Console.ReadLine();
-        if (board.TryParseMove(move2, out row2, out col2) && board.IsCellHidden(row2, col2) && (row1 != row2 || col1 != col2))
-        {
-            card2 = board.RevealCell(row2, col2);
-            board.Print();
-        }
-        else
-        {
-            Console.WriteLine("Invalid move. Try again.");
-            return false;
-        }
+        do{
+            if (!board.TryParseMove(move2, out row2, out col2) || !board.IsCellHidden(row2, col2) || (row1 == row2 && col1 == col2))
+            {
+                Console.WriteLine("Invalid move. Try again.");
+                move2 = Console.ReadLine();
+            }
+        } while (!board.TryParseMove(move2, out row2, out col2) || !board.IsCellHidden(row2, col2) || (row1 == row2 && col1 == col2));
+
+        card2 = board.RevealCell(row2, col2);
+        board.Print();
         
         // Check if the cards match
         if (card1 == card2)
