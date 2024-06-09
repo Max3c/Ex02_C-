@@ -55,7 +55,7 @@ public static class HumanPlayer
         if (card1 == card2)
         {   
             Console.WriteLine("\nYou found a match!");
-            System.Threading.Thread.Sleep(5000); 
+            System.Threading.Thread.Sleep(2000); 
             Ex02.ConsoleUtils.Screen.Clear();
             return true;
 
@@ -63,7 +63,7 @@ public static class HumanPlayer
         else
         {
             Console.WriteLine("\nNo match. Better luck next time!");
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(2000);
             board.HideCell(row1, col1);
             board.HideCell(row2, col2);
             Ex02.ConsoleUtils.Screen.Clear();

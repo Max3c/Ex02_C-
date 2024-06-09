@@ -40,7 +40,7 @@ public static class ComputerPlayer
         {
             Console.WriteLine("Computer found a match!");
             
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(2000);
             Ex02.ConsoleUtils.Screen.Clear();
 
             return true;
@@ -48,7 +48,7 @@ public static class ComputerPlayer
         else
         {
             Console.WriteLine("No match. Better luck next time, computer!");
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(2000);
             board.HideCell(row1, col1);
             board.HideCell(row2, col2);
             Ex02.ConsoleUtils.Screen.Clear();
