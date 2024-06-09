@@ -5,6 +5,9 @@ public static class GameUI
     {
         Console.Write("Enter player 1 name: ");
         player1Name = Console.ReadLine();
+        player1Name = validateUsername(player1Name);
+
+    
 
         Console.Write("Play against computer (y/n): ");
         char choice = Console.ReadKey().KeyChar;
@@ -15,6 +18,8 @@ public static class GameUI
         {
             Console.Write("Enter player 2 name: ");
             player2Name = Console.ReadLine();
+            
+
         }
         else
         {
@@ -34,5 +39,13 @@ public static class GameUI
             Console.Write("Enter board columns (4, 6): ");
             validInput = int.TryParse(Console.ReadLine(), out boardColumns) && (boardColumns == 4 || boardColumns == 6);
         } while (!validInput);
+    }
+
+    private static string validateUsername(string name){
+        while(name.Length >= 20 || name.Contains(" ")){
+            Console.WriteLine("Invalid name, please enter a name with less than 20 characters and no spaces");
+            name = Console.ReadLine();
+        }
+        return name;
     }
 }
