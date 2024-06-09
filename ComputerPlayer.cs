@@ -34,7 +34,7 @@ public static class ComputerPlayer
         board.Print();
         Console.WriteLine($"\nComputer chose {board.GetCellName(row1, col1)}");
         Console.WriteLine($"Computer chose {board.GetCellName(row2, col2)}");
-
+        bool isMatch = card1==card2;
         
         if (card1 == card2)
         {
@@ -43,7 +43,7 @@ public static class ComputerPlayer
             System.Threading.Thread.Sleep(2000);
             Ex02.ConsoleUtils.Screen.Clear();
 
-            return true;
+            return isMatch;
         }
         else
         {
@@ -52,7 +52,7 @@ public static class ComputerPlayer
             board.HideCell(row1, col1);
             board.HideCell(row2, col2);
             Ex02.ConsoleUtils.Screen.Clear();
-            return false;
+            return isMatch;
         }
     }
 }

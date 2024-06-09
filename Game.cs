@@ -78,12 +78,15 @@ public class Game
 
     private bool AskForRematch()
     {
+        bool isRematch = false;
         Console.WriteLine("Would you like to play again (Y/N)?");
         string playAgain = Console.ReadLine();
         if (playAgain.Equals("Y", StringComparison.OrdinalIgnoreCase))
         {
+            isRematch = true;
             Screen.Clear();
-            return true;
+
+            return isRematch;
         }
         else
         {
@@ -91,7 +94,8 @@ public class Game
             Console.WriteLine("Goodbye!");
             System.Threading.Thread.Sleep(2000);
             Screen.Clear();
-            return false;
+
+            return isRematch;
         }
     }
 }

@@ -41,6 +41,7 @@ public static class HumanPlayer
         card2 = io_Board.RevealCell(row2, col2);
         Screen.Clear();
         io_Board.Print();
+        bool isMatch = card1 == card2;
 
         // Check if the cards match
         if (card1 == card2)
@@ -48,7 +49,7 @@ public static class HumanPlayer
             Console.WriteLine("\nYou found a match!");
             System.Threading.Thread.Sleep(2000); 
             Screen.Clear();
-            return true;
+            return isMatch;
         }
         else
         {
@@ -57,7 +58,8 @@ public static class HumanPlayer
             io_Board.HideCell(row1, col1);
             io_Board.HideCell(row2, col2);
             Screen.Clear();
-            return false;
+
+            return isMatch;
         }
     }
 

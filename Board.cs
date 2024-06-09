@@ -2,27 +2,27 @@
 
 public class Board
 {
-    private char[,] m_Cells;
-    private bool[,] m_Revealed;
+    private char[,] m_cells;
+    private bool[,] m_revealed;
     public int Rows { get; }
     public int Columns { get; }
-    public Random m_Random = new Random();
+    public Random m_random = new Random();
 
-    public Board(int rows, int columns)
+    public Board(int i_rows, int i_columns)
     {
-        if (rows < 4 || rows > 6 || rows % 2 != 0 || columns < 4 || columns > 6 || columns % 2 != 0)
+        if (i_rows < 4 || i_rows > 6 || i_rows % 2 != 0 || i_columns < 4 || i_columns > 6 || i_columns % 2 != 0)
         {
             throw new ArgumentException("Board dimensions must be even and between 4x4 and 6x6.");
         }
 
-        Rows = rows;
-        Columns = columns;
-        m_Cells = new char[Rows,Columns];
-        m_Revealed = new bool[Rows,Columns];
-        initializeBoard();
+        Rows = i_rows;
+        Columns = i_columns;
+        m_cells = new char[Rows, Columns];
+        m_revealed = new bool[Rows, Columns];
+        InitializeBoard();
     }
 
-    private void initializeBoard()
+    private void InitializeBoard()
     {
         char[] letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
         int pairs = (Rows * Columns) / 2;
@@ -36,7 +36,7 @@ public class Board
 
         for (int i = boardLetters.Length - 1; i > 0; i--)
         {
-            int j = m_Random.Next(i + 1);
+            int j = m_random.Next(i + 1);
             char temp = boardLetters[i];
             boardLetters[i] = boardLetters[j];
             boardLetters[j] = temp;
@@ -47,11 +47,12 @@ public class Board
         {
             for (int j = 0; j < Columns; j++)
             {
-                m_Cells[i, j] = boardLetters[k++];
-                m_Revealed[i, j] = false;
+                m_cells[i, j] = boardLetters[k++];
+                m_revealed[i, j] = false;
             }
         }
     }
+
     public void Print()
     {
         Console.WriteLine("");
@@ -67,9 +68,9 @@ public class Board
             Console.Write($"{i + 1} |");
             for (int j = 0; j < Columns; j++)
             {
-                if (m_Revealed[i, j])
+                if (m_revealed[i, j])
                 {
-                    Console.Write($" {m_Cells[i, j]} |");
+                    Console.Write($" {m_cells[i, j]} |");
                 }
                 else
                 {
@@ -81,37 +82,41 @@ public class Board
         }
     }
 
-    public char HideCell(int row, int col)
+    public char HideCell(int i_row, int i_col)
     {
-        m_Revealed[row, col] = false;
-        return m_Cells[row, col];
-    }
-    public char RevealCell(int row, int col)
-    {
-        m_Revealed[row, col] = true;
-        return m_Cells[row, col];
+        m_revealed[i_row, i_col] = false;
+        
+        return m_cells[i_row, i_col];
     }
 
-    public bool IsCellHidden(int row, int col)
+    public char RevealCell(int i_row, int i_col)
     {
-        return !m_Revealed[row, col];
+        m_revealed[i_row, i_col] = true;
+
+        return m_cells[i_row, i_col];
     }
 
-    public bool TryParseMove(string move, out int row, out int col)
+    public bool IsCellHidden(int i_row, int i_col)
     {
-        row = col = -1;
-        if (move.Length != 2) return false;
-        if (move[0] < 'A' || move[0] >= 'A' + Columns) return false;
-        if (move[1] < '1' || move[1] >= '1' + Rows) return false;
+        return !m_revealed[i_row, i_col];
+    }
 
-        col = move[0] - 'A';
-        row = move[1] - '1';
+    public bool TryParseMove(string i_move, out int o_row, out int o_col)
+    {
+        o_row = o_col = -1;
+        if (i_move.Length != 2) return false;
+        if (i_move[0] < 'A' || i_move[0] >= 'A' + Columns) return false;
+        if (i_move[1] < '1' || i_move[1] >= '1' + Rows) return false;
+
+        o_col = i_move[0] - 'A';
+        o_row = i_move[1] - '1';
+
         return true;
     }
 
-    public string GetCellName(int row, int col)
+    public string GetCellName(int i_row, int i_col)
     {
-        return $"{(char)('A' + col)}{(row + 1)}";
+        return $"{(char)('A' + i_col)}{(i_row + 1)}";
     }
 
     public bool IsFull()
@@ -120,9 +125,10 @@ public class Board
         {
             for (int j = 0; j < Columns; j++)
             {
-                if (!m_Revealed[i, j]) return false;
+                if (!m_revealed[i, j]) return false;
             }
         }
+
         return true;
     }
 }
