@@ -11,9 +11,8 @@ public class Game
     public Game()
     {
         m_IsPlayer1Turn = true;
-        Ex02.ConsoleUtils.Screen.Clear();
+        Screen.Clear();
         InitializeGame();
-
     }
 
     public bool Start()
@@ -25,53 +24,31 @@ public class Game
             m_Board.Print();
         }
         AnnounceWinner();
-        Console.WriteLine("Would you like to play again(Y/N)?");
-        string playAgain;
-        playAgain = Console.ReadLine();
-        if(playAgain == "Y" || playAgain == "y")
-        {
-            Ex02.ConsoleUtils.Screen.Clear();
-            return true;
-        }
-        else
-        {
-            Ex02.ConsoleUtils.Screen.Clear();
-            Console.WriteLine("Goodbye!");
-            System.Threading.Thread.Sleep(2000);
-            Ex02.ConsoleUtils.Screen.Clear();
-            return false;
-        }
+        return AskForRematch();
     }
 
     private void InitializeGame()
     {
         GameUI.GetPlayerInfo(out string player1Name, out bool isAgainstComputer, out string player2Name, out int rows, out int columns);
         m_Player1 = new Player(player1Name, 0, true);
-        if(isAgainstComputer)
-        {
-            m_Player2 = new Player(player2Name, 0, false);
-        }
-        else
-        {
-            m_Player2 = new Player(player2Name, 0, true);
-        }
+        m_Player2 = new Player(player2Name, 0, !isAgainstComputer);
         m_Board = new Board(rows, columns);
-        Ex02.ConsoleUtils.Screen.Clear();
+        Screen.Clear();
     }
 
     private void TakeTurn()
     {
-        Player currentPlayer = m_IsPlayer1Turn ? m_Player1 : m_Player2; 
-        Console.WriteLine($"\n{(currentPlayer.Name)}'s turn");
+        Player currentPlayer = m_IsPlayer1Turn ? m_Player1 : m_Player2;
+        Console.WriteLine($"\n{currentPlayer.Name}'s turn");
 
         bool correctGuess = currentPlayer.MakeMove(m_Board);
-        
-        
-        if(correctGuess){
-            int currScore = currentPlayer.Score;
-           currentPlayer.increaseScore();
+
+        if (correctGuess)
+        {
+            currentPlayer.increaseScore();
         }
-        else{
+        else
+        {
             m_IsPlayer1Turn = !m_IsPlayer1Turn;
         }
     }
@@ -83,21 +60,38 @@ public class Game
 
     private void AnnounceWinner()
     {
-        if(m_Player1.Score > m_Player2.Score)
+        if (m_Player1.Score > m_Player2.Score)
         {
-            Console.WriteLine($"\n{m_Player1.Name} wins! with {m_Player1.Score} points!");
+            Console.WriteLine($"\n{m_Player1.Name} wins with {m_Player1.Score} points!");
             Console.WriteLine($"\n{m_Player2.Name} had {m_Player2.Score} points.");
         }
-        else if(m_Player1.Score < m_Player2.Score)
+        else if (m_Player1.Score < m_Player2.Score)
         {
-            Console.WriteLine($"{m_Player2.Name} wins! with {m_Player2.Score} points!");
+            Console.WriteLine($"\n{m_Player2.Name} wins with {m_Player2.Score} points!");
             Console.WriteLine($"\n{m_Player1.Name} had {m_Player1.Score} points.");
         }
         else
         {
-            Console.WriteLine($"\nIt's a tie! With a tied score of {m_Player1.Score} points!");
+            Console.WriteLine($"\nIt's a tie with a score of {m_Player1.Score} points each!");
+        }
+    }
 
+    private bool AskForRematch()
+    {
+        Console.WriteLine("Would you like to play again (Y/N)?");
+        string playAgain = Console.ReadLine();
+        if (playAgain.Equals("Y", StringComparison.OrdinalIgnoreCase))
+        {
+            Screen.Clear();
+            return true;
+        }
+        else
+        {
+            Screen.Clear();
+            Console.WriteLine("Goodbye!");
+            System.Threading.Thread.Sleep(2000);
+            Screen.Clear();
+            return false;
         }
     }
 }
-
